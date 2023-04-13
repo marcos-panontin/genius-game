@@ -11,9 +11,21 @@ const blueSound = document.getElementById("sound3");
 const yellowSound = document.getElementById("sound4");
 const errorSound = document.getElementById("soundError");
 
-const localRecord = localStorage.getItem("genius-record");
+const localRecord = localStorage.getItem("genius-record") || 0;
+const localRecordTime = localStorage.getItem("genius-record-date") || '';
+
 const bestScore = document.getElementById("best-score");
-bestScore.innerHTML = localRecord;
+bestScore.innerHTML = `${localRecord} </br> ${localRecordTime}` || 0;
+
+const dateOptions = {
+  day: "2-digit",
+  month: "2-digit",
+  year: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+  hour12: false,
+};
 
 let playerOrder = [];
 let computerOrder = [];
@@ -99,8 +111,13 @@ function check() {
     // CHECKING THE INFO IN THE LOCALSTORAGE:
 
     if (turn > localRecord) {
+      const currentTime = new Date()
+        .toLocaleString("pt-br", dateOptions)
+        .replace(",", "-");
+
       localStorage.setItem("genius-record", turn);
-      bestScore.innerHTML = localStorage.getItem("genius-record");
+      localStorage.setItem("genius-record-date", currentTime);
+      bestScore.innerHTML = `${turn} </br>${currentTime}`;
     }
 
     turn += 1;
