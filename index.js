@@ -11,6 +11,10 @@ const blueSound = document.getElementById("sound3");
 const yellowSound = document.getElementById("sound4");
 const errorSound = document.getElementById("soundError");
 
+const localRecord = localStorage.getItem("genius-record");
+const bestScore = document.getElementById("best-score");
+bestScore.innerHTML = localRecord;
+
 let playerOrder = [];
 let computerOrder = [];
 let playerAllGood;
@@ -39,12 +43,12 @@ function startGame() {
   startBtn.innerHTML = `TURNO: ${turn}`;
   startBtn.style.fontSize = "1.5em";
   generateComputerOrder();
-  computerTurnInterval = setInterval(gameTurn, 1000);
+  computerTurnInterval = setInterval(gameTurn, 1100);
 }
 
 function generateComputerOrder() {
   computerOrder = [];
-  for (let index = 0; index < 20; index += 1) {
+  for (let index = 0; index < 50; index += 1) {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
     computerOrder.push(randomNumber);
   }
@@ -76,7 +80,6 @@ function check() {
     computerOrder[playerOrder.length - 1] ===
     playerOrder[playerOrder.length - 1]
   ) {
-    console.log("Acertou");
     playerAllGood = true;
   }
 
@@ -89,21 +92,23 @@ function check() {
     blinkLights();
     startBtn.innerHTML = `RESTART</br> GAME`;
     startBtn.style.fontSize = "2em";
-      startBtn.disabled = false;
-
+    startBtn.disabled = false;
   }
 
   if (playerAllGood && playerOrder.length === turn) {
+    // CHECKING THE INFO IN THE LOCALSTORAGE:
+
+    if (turn > localRecord) {
+      localStorage.setItem("genius-record", turn);
+      bestScore.innerHTML = localStorage.getItem("genius-record");
+    }
+
     turn += 1;
     startBtn.innerHTML = `TURNO: ${turn}`;
     playerOrder = [];
     computerTurn = true;
     counter = 0;
     computerTurnInterval = setInterval(gameTurn, 1000);
-  }
-
-  if (!playerAllGood) {
-    console.log("vamos começar do zero");
   }
 }
 
