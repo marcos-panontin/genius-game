@@ -103,7 +103,7 @@ function check() {
     allowSound = false;
     blinkLights();
     startBtn.innerHTML = `RECOMEÇAR</br> JOGO`;
-    startBtn.style.fontSize = "2em";
+    startBtn.style.fontSize = "1.5em";
     startBtn.disabled = false;
   }
 
@@ -138,28 +138,28 @@ function blinkLights() {
 
 function red() {
   redButton.style.background = "tomato";
-  redSound.currenTime = 0;
+  redSound.currentTime = 0;
   if (allowSound) redSound.play();
   if (!allowSound) errorSound.play();
 }
 
 function green() {
   greenButton.style.background = "lightgreen";
-  greenSound.currenTime = 0;
+  greenSound.currentTime = 0;
   if (allowSound) greenSound.play();
   if (!allowSound) errorSound.play();
 }
 
 function blue() {
   blueButton.style.background = "lightskyblue";
-  blueSound.currenTime = 0;
+  blueSound.currentTime = 0;
   if (allowSound) blueSound.play();
   if (!allowSound) errorSound.play();
 }
 
 function yellow() {
   yellowButton.style.background = "yellow";
-  yellowSound.currenTime = 0;
+  yellowSound.currentTime = 0;
   if (allowSound) yellowSound.play();
   if (!allowSound) errorSound.play();
 }

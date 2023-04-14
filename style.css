@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -12,27 +14,29 @@ body {
 .container {
   padding: 1vh;
   display: flex;
-  height: 80vh;
+  height: 50vh;
   margin: 2em 0;
   flex-direction: column;
 }
 
 .main-title {
   font-size: 10vh;
-  /* margin: 1em; */
+}
+
+.game-rules {
+  padding-bottom: 1.5vh;
 }
 
 .best-score {
-  font-size: 1em;
+  font-size: 2vh;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
 }
 
 .current-score {
-  font-size: 1em;
+  font-size: 1vh;
   font-family: "Roboto", sans-serif;
-    font-weight: bold;
-
+  font-weight: bold;
 }
 
 .colors-container {
@@ -46,7 +50,7 @@ body {
 }
 
 .color-button {
-  width: 47%;
+  width: 40%;
   aspect-ratio: 1 / 1;
   /* cursor: pointer; */
 }
@@ -60,22 +64,19 @@ body {
 #color-button-2 {
   background-color: darkgreen;
   border-top-right-radius: 100%;
-    border: 4px black solid;
-
+  border: 4px black solid;
 }
 
 #color-button-3 {
   background-color: darkblue;
   border-bottom-left-radius: 100%;
-    border: 4px black solid;
-
+  border: 4px black solid;
 }
 
 #color-button-4 {
   background-color: goldenrod;
   border-bottom-right-radius: 100%;
-    border: 4px black solid;
-
+  border: 4px black solid;
 }
 
 #color-button-1:active {
@@ -94,7 +95,7 @@ body {
 .start-btn {
   background-color: whitesmoke;
   font-size: 2.5em;
-  width: 50%;
+  width: 40%;
   position: absolute;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
@@ -114,4 +115,16 @@ body {
 .change-opacity {
   opacity: 0.35;
   transition: 0.2s;
+}
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.1vh;
+  font-size: 2em;
+  margin-left: auto;
+  margin-right: 3vw;
+  border-radius: 100%;
+  line-height: 0;
 }
