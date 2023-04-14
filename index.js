@@ -4,6 +4,7 @@ const redButton = document.getElementById("color-button-1");
 const greenButton = document.getElementById("color-button-2");
 const blueButton = document.getElementById("color-button-3");
 const yellowButton = document.getElementById("color-button-4");
+const clearRecordButton = document.getElementById("clear-record");
 
 const redSound = document.getElementById("sound1");
 const greenSound = document.getElementById("sound2");
@@ -12,10 +13,24 @@ const yellowSound = document.getElementById("sound4");
 const errorSound = document.getElementById("soundError");
 
 const localRecord = localStorage.getItem("genius-record") || 0;
-const localRecordTime = localStorage.getItem("genius-record-date") || '';
+const localRecordTime = localStorage.getItem("genius-record-date") || "";
 
 const bestScore = document.getElementById("best-score");
 bestScore.innerHTML = `${localRecord} </br> ${localRecordTime}` || 0;
+
+const soundsCheckbox = document.getElementById("user-wants-sounds");
+if (JSON.parse(localStorage.getItem("userWantsSounds")) === null) {
+  soundsCheckbox.checked = true;
+} else {
+  soundsCheckbox.checked = JSON.parse(localStorage.getItem("userWantsSounds"));
+}
+let userWantsSounds = soundsCheckbox.checked;
+
+// ENABLING REMOVE RECORD BUTTON, IF RECORD EXISTS IN LOCAL STORAGE
+
+if (typeof JSON.parse(localStorage.getItem("genius-record")) === "number") {
+  document.getElementById("open-reset-record-modal").disabled = false;
+}
 
 const dateOptions = {
   day: "2-digit",
@@ -108,8 +123,7 @@ function check() {
   }
 
   if (playerAllGood && playerOrder.length === turn) {
-    // CHECKING THE INFO IN THE LOCALSTORAGE:
-
+    // CHECKING THE RECORD AND DATE IN THE LOCALSTORAGE:
     if (turn > localRecord) {
       const currentTime = new Date()
         .toLocaleString("pt-br", dateOptions)
@@ -117,6 +131,7 @@ function check() {
 
       localStorage.setItem("genius-record", turn);
       localStorage.setItem("genius-record-date", currentTime);
+      document.getElementById("open-reset-record-modal").disabled = false;
       bestScore.innerHTML = `${turn} </br>${currentTime}`;
     }
 
@@ -139,29 +154,29 @@ function blinkLights() {
 function red() {
   redButton.style.background = "tomato";
   redSound.currentTime = 0;
-  if (allowSound) redSound.play();
-  if (!allowSound) errorSound.play();
+  if (allowSound && userWantsSounds) redSound.play();
+  if (!allowSound && userWantsSounds) errorSound.play();
 }
 
 function green() {
   greenButton.style.background = "lightgreen";
   greenSound.currentTime = 0;
-  if (allowSound) greenSound.play();
-  if (!allowSound) errorSound.play();
+  if (allowSound && userWantsSounds) greenSound.play();
+  if (!allowSound && userWantsSounds) errorSound.play();
 }
 
 function blue() {
   blueButton.style.background = "lightskyblue";
   blueSound.currentTime = 0;
-  if (allowSound) blueSound.play();
-  if (!allowSound) errorSound.play();
+  if (allowSound && userWantsSounds) blueSound.play();
+  if (!allowSound && userWantsSounds) errorSound.play();
 }
 
 function yellow() {
   yellowButton.style.background = "yellow";
   yellowSound.currentTime = 0;
-  if (allowSound) yellowSound.play();
-  if (!allowSound) errorSound.play();
+  if (allowSound && userWantsSounds) yellowSound.play();
+  if (!allowSound && userWantsSounds) errorSound.play();
 }
 
 function resetColors() {
@@ -211,4 +226,17 @@ yellowButton.addEventListener("click", () => {
     yellow();
     setTimeout(resetColors, 300);
   }
+});
+
+soundsCheckbox.addEventListener("change", () => {
+  userWantsSounds = soundsCheckbox.checked;
+  localStorage.setItem("userWantsSounds", userWantsSounds);
+});
+
+clearRecordButton.addEventListener("click", () => {
+  localStorage.removeItem("genius-record-date");
+  localStorage.removeItem("genius-record");
+  document.getElementById("open-reset-record-modal").disabled = true;
+  bestScore.innerHTML = 0;
+  localRecord = 0;
 });

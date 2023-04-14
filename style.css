@@ -116,6 +116,11 @@ body {
   line-height: 0;
 }
 
+.form-check {
+  text-align: left;
+  margin-bottom: 1.5vh;
+}
+
 
 @media screen and (min-width: 500px) {
   body {
