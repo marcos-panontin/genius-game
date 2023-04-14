@@ -79,19 +79,6 @@ body {
   border: 4px black solid;
 }
 
-#color-button-1:active {
-  opacity: 0.5;
-}
-#color-button-2:active {
-  opacity: 0.5;
-}
-#color-button-3:active {
-  opacity: 0.5;
-}
-#color-button-4:active {
-  opacity: 0.5;
-}
-
 .start-btn {
   background-color: whitesmoke;
   font-size: 2.5em;
