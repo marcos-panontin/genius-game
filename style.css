@@ -128,8 +128,11 @@ body {
   }
 
   .container {
-    max-width: 500px;
+    max-width: 400px;
     margin: auto;
     max-height: 80%;
+  }
+  .game-rules {
+    font-size: 1.5em;
   }
 }
