@@ -102,7 +102,7 @@ function check() {
     playerAllGood = false;
     allowSound = false;
     blinkLights();
-    startBtn.innerHTML = `RESTART</br> GAME`;
+    startBtn.innerHTML = `RECOMEÇAR</br> JOGO`;
     startBtn.style.fontSize = "2em";
     startBtn.disabled = false;
   }
