@@ -128,3 +128,16 @@ body {
   border-radius: 100%;
   line-height: 0;
 }
+
+
+@media screen and (min-width: 500px) {
+  body {
+    background-color: lightblue;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: auto;
+    max-height: 80%;
+  }
+}
