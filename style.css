@@ -149,10 +149,20 @@ body {
 }
 
 @media screen and (min-width: 500px) {
+
+
+  body {
+    background-color: lightseagreen;
+      height: 80%;
+
+  }
   .container {
+    background-color: white;
     max-width: 400px;
     margin: auto;
-    height: 100vh;
+    border: solid 4px rgb(21, 100, 96);
+    border-radius: 20px;
+    margin: 30px auto;
   }
   .game-rules {
     font-size: 1.5em;
