@@ -1,17 +1,14 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
 
-/* body > * {outline: 1px solid red;}
-body > * > * {outline: 1px solid yellow;}
-body > * > * > * {outline: 1px solid blue;}
-body > * > * > * > * {outline: 1px solid green;}
-body > * > * > * > * > * {outline: 1px solid rgb(255, 3, 171);}
-body > * > * > * > * > * > * {outline: 1px solid brown;} */
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 body {
@@ -20,8 +17,7 @@ body {
   text-align: center;
   background-color: rgb(255, 255, 255);
   font-family: "Bubblegum Sans", cursive;
-  /* min-height: -webkit-fill-available; */
-  /* height: 100%; */
+  height: 100%;
 }
 
 .container {
@@ -34,6 +30,10 @@ body {
 
 .main-title {
   font-size: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 30%; */
 }
 
 .main-title span {
@@ -42,13 +42,11 @@ body {
 }
 
 .game-rules {
-  padding-bottom: 1.5vh;
-}
-
-.best-score {
-  font-size: 2vh;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 10%; */
+  font-size: 4vh;
 }
 
 .current-score {
@@ -58,19 +56,20 @@ body {
 }
 
 .colors-container {
-  width: 100%;
+  aspect-ratio: 1 / 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin-top: auto; */
+  /* align-self: center; */
   position: relative;
-  padding-bottom: 2vh;
+  /* margin: 3vh; */
+  /* padding: 3vh; */
 }
 
 .color-button {
-  width: 40%;
   aspect-ratio: 1 / 1;
-  /* cursor: pointer; */
+  width: 40%;
+  height: unset;
 }
 
 #color-button-1 {
@@ -99,14 +98,15 @@ body {
 
 .start-btn {
   background-color: whitesmoke;
-  font-size: 2.5em;
-  width: 40%;
-  position: absolute;
+  font-size: 10vw;
   aspect-ratio: 1 / 1;
+  width: 45%;
+  height: unset;
+  position: absolute;
   border-radius: 100%;
   align-self: center;
   border: solid 4px black;
-  line-height: normal;
+  /* line-height: normal; */
 }
 
 .start-btn:disabled {
@@ -130,15 +130,25 @@ body {
   margin-bottom: 1.5vh;
 }
 
-.footer{
+.footer {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin: 2vw;
+  height: unset;
+  margin-bottom: 2vh;
+}
+
+.best-score {
+  margin-left: 1vh;
+  font-size: 2vh;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  height: unset;
+}
+
+.modal {
+  height: unset;
 }
 
 @media screen and (min-width: 500px) {
-
   .container {
     max-width: 400px;
     margin: auto;
@@ -146,5 +156,8 @@ body {
   }
   .game-rules {
     font-size: 1.5em;
+  }
+  .start-btn {
+    font-size: 2.5em;
   }
 }
