@@ -7,6 +7,7 @@ const yellowButton = document.getElementById("color-button-4");
 const clearRecordButton = document.getElementById("clear-record");
 const relaxModeButton = document.getElementById("relax-mode-switch");
 const insaneModeButton = document.getElementById("insane-mode-switch");
+const insaneModeDuration = 400;
 
 const redSound = document.getElementById("sound1");
 const greenSound = document.getElementById("sound2");
@@ -35,9 +36,6 @@ let userWantsSounds = soundsCheckbox.checked;
 
 // RELAX MODE
 
-console.log(JSON.parse(localStorage.getItem("userWantsRelaxMode")));
-console.log(JSON.parse(localStorage.getItem("userWantsInsaneMode")));
-
 if (JSON.parse(localStorage.getItem("userWantsRelaxMode")) === true) {
   relaxModeButton.checked = true;
 } else {
@@ -57,7 +55,7 @@ if (JSON.parse(localStorage.getItem("userWantsInsaneMode")) === true) {
 let userWantsInsaneMode = insaneModeButton.checked;
 
 if (userWantsInsaneMode) {
-  turnDuration = 400;
+  turnDuration = insaneModeDuration;
 }
 
 // ENABLING REMOVE RECORD BUTTON, IF RECORD EXISTS IN LOCAL STORAGE
@@ -306,6 +304,9 @@ relaxModeButton.addEventListener("change", () => {
     userWantsInsaneMode = insaneModeButton.checked;
   }
   localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
+    if (userWantsInsaneMode) {
+      turnDuration = insaneModeDuration;
+    }
 });
 
 insaneModeButton.addEventListener("change", () => {
@@ -314,6 +315,9 @@ insaneModeButton.addEventListener("change", () => {
     relaxModeButton.checked = !insaneModeButton.checked;
     localStorage.setItem("userWantsRelaxMode", relaxModeButton.checked);
     userWantsRelaxMode = relaxModeButton.checked;
+  }
+  if (userWantsInsaneMode) {
+    turnDuration = insaneModeDuration;
   }
   localStorage.setItem("userWantsInsaneMode", userWantsInsaneMode);
 });
