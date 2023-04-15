@@ -5,6 +5,8 @@ const greenButton = document.getElementById("color-button-2");
 const blueButton = document.getElementById("color-button-3");
 const yellowButton = document.getElementById("color-button-4");
 const clearRecordButton = document.getElementById("clear-record");
+const relaxModeButton = document.getElementById("relax-mode-switch");
+
 
 const redSound = document.getElementById("sound1");
 const greenSound = document.getElementById("sound2");
@@ -12,11 +14,13 @@ const blueSound = document.getElementById("sound3");
 const yellowSound = document.getElementById("sound4");
 const errorSound = document.getElementById("soundError");
 
-const localRecord = localStorage.getItem("genius-record") || 0;
+let localRecord = localStorage.getItem("genius-record") || 0;
 const localRecordTime = localStorage.getItem("genius-record-date") || "";
 
 const bestScore = document.getElementById("best-score");
 bestScore.innerHTML = `${localRecord} </br> ${localRecordTime}` || 0;
+
+//ALLOW SOUNDS
 
 const soundsCheckbox = document.getElementById("user-wants-sounds");
 if (JSON.parse(localStorage.getItem("userWantsSounds")) === null) {
@@ -25,6 +29,18 @@ if (JSON.parse(localStorage.getItem("userWantsSounds")) === null) {
   soundsCheckbox.checked = JSON.parse(localStorage.getItem("userWantsSounds"));
 }
 let userWantsSounds = soundsCheckbox.checked;
+
+// RELAX MODE
+
+
+if (JSON.parse(localStorage.getItem("userWantsRelaxMode"))) {
+  relaxModeButton.checked = true;
+} else {
+  relaxModeButton.checked = false;
+  localStorage.setItem("userWantsRelaxMode", relaxModeButton.checked);
+
+}
+let userWantsRelaxMode = relaxModeButton.checked;
 
 // ENABLING REMOVE RECORD BUTTON, IF RECORD EXISTS IN LOCAL STORAGE
 
@@ -70,7 +86,7 @@ function startGame() {
   startBtn.innerHTML = `TURNO: ${turn}`;
   startBtn.style.fontSize = "1.5em";
   generateComputerOrder();
-  computerTurnInterval = setInterval(gameTurn, 1100);
+  computerTurnInterval = setInterval(gameTurn, 800);
 }
 
 function generateComputerOrder() {
@@ -239,4 +255,10 @@ clearRecordButton.addEventListener("click", () => {
   document.getElementById("open-reset-record-modal").disabled = true;
   bestScore.innerHTML = 0;
   localRecord = 0;
+});
+
+
+relaxModeButton.addEventListener("change", () => {
+  userWantsRelaxMode = relaxModeButton.checked;
+    localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
 });
