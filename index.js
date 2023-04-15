@@ -154,7 +154,7 @@ function check() {
     if (turn > localRecord) {
       const currentTime = new Date()
         .toLocaleString("pt-br", dateOptions)
-        .replace(",", "-");
+        .replace(",", " -");
 
       localStorage.setItem("genius-record", turn);
       localStorage.setItem("genius-record-date", currentTime);
