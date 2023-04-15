@@ -16,10 +16,12 @@ const errorSound = document.getElementById("soundError");
 
 let localRecord = localStorage.getItem("genius-record") || 0;
 const localRecordTime = localStorage.getItem("genius-record-date") || "";
+const localRecordMode = localStorage.getItem("genius-record-mode") || "";
 
 let turnDuration = 800;
 const bestScore = document.getElementById("best-score");
-bestScore.innerHTML = `${localRecord} </br> ${localRecordTime}` || 0;
+bestScore.innerHTML =
+  `${localRecord} </br> ${localRecordTime} ${localRecord !== 0 ? '-' : ''} ${localRecordMode}`;
 
 //ALLOW SOUNDS
 
@@ -33,7 +35,10 @@ let userWantsSounds = soundsCheckbox.checked;
 
 // RELAX MODE
 
-if (JSON.parse(localStorage.getItem("userWantsRelaxMode"))) {
+console.log(JSON.parse(localStorage.getItem("userWantsRelaxMode")));
+console.log(JSON.parse(localStorage.getItem("userWantsInsaneMode")));
+
+if (JSON.parse(localStorage.getItem("userWantsRelaxMode")) === true) {
   relaxModeButton.checked = true;
 } else {
   relaxModeButton.checked = false;
@@ -43,7 +48,7 @@ let userWantsRelaxMode = relaxModeButton.checked;
 
 //INSANE MODE
 
-if (JSON.parse(localStorage.getItem("userWantsInsaneMode"))) {
+if (JSON.parse(localStorage.getItem("userWantsInsaneMode")) === true) {
   insaneModeButton.checked = true;
 } else {
   insaneModeButton.checked = false;
@@ -96,7 +101,7 @@ function resetVariables() {
 function startGame() {
   resetVariables();
   startBtn.disabled = true;
-  startBtn.innerHTML = `TURNO: ${turn}`;
+  startBtn.innerHTML = `TURNO: ${userWantsInsaneMode ? "?" : turn}`;
   startBtn.style.fontSize = "1.5em";
   generateComputerOrder();
   computerTurnInterval = setInterval(gameTurn, turnDuration);
@@ -157,7 +162,7 @@ function check() {
     // ZEN MODE
 
     if (userWantsRelaxMode) {
-      startBtn.innerHTML = `TURNO: ${turn}`;
+      startBtn.innerHTML = `TURNO: ${userWantsInsaneMode ? "?" : turn}`;
       playerOrder = [];
       computerTurn = true;
       counter = 0;
@@ -166,6 +171,14 @@ function check() {
   }
 
   if (playerAllGood && playerOrder.length === turn) {
+    let currentMode = "Normal";
+    if (userWantsInsaneMode) {
+      currentMode = "Insano";
+    }
+    if (userWantsRelaxMode) {
+      currentMode = "Relax";
+    }
+
     // CHECKING THE RECORD AND DATE IN THE LOCALSTORAGE:
     if (turn > localRecord) {
       const currentTime = new Date()
@@ -174,12 +187,13 @@ function check() {
 
       localStorage.setItem("genius-record", turn);
       localStorage.setItem("genius-record-date", currentTime);
+      localStorage.setItem("genius-record-mode", currentMode);
       document.getElementById("open-reset-record-modal").disabled = false;
-      bestScore.innerHTML = `${turn} </br>${currentTime}`;
+      bestScore.innerHTML = `${turn} </br>${currentTime} - ${currentMode}`;
     }
 
     turn += 1;
-    startBtn.innerHTML = `TURNO: ${turn}`;
+    startBtn.innerHTML = `TURNO: ${userWantsInsaneMode ? "?" : turn}`;
     playerOrder = [];
     computerTurn = true;
     counter = 0;
@@ -288,6 +302,8 @@ relaxModeButton.addEventListener("change", () => {
   userWantsRelaxMode = relaxModeButton.checked;
   if (insaneModeButton.checked) {
     insaneModeButton.checked = !relaxModeButton.checked;
+    localStorage.setItem("userWantsInsaneMode", insaneModeButton.checked);
+    userWantsInsaneMode = insaneModeButton.checked;
   }
   localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
 });
@@ -296,6 +312,8 @@ insaneModeButton.addEventListener("change", () => {
   userWantsInsaneMode = insaneModeButton.checked;
   if (relaxModeButton.checked) {
     relaxModeButton.checked = !insaneModeButton.checked;
+    localStorage.setItem("userWantsRelaxMode", relaxModeButton.checked);
+    userWantsRelaxMode = relaxModeButton.checked;
   }
   localStorage.setItem("userWantsInsaneMode", userWantsInsaneMode);
 });
