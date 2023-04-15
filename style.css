@@ -1,5 +1,13 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
 
+/* body > * {outline: 1px solid red;}
+body > * > * {outline: 1px solid yellow;}
+body > * > * > * {outline: 1px solid blue;}
+body > * > * > * > * {outline: 1px solid green;}
+body > * > * > * > * > * {outline: 1px solid rgb(255, 3, 171);}
+body > * > * > * > * > * > * {outline: 1px solid brown;} */
+
+
 * {
   margin: 0;
   padding: 0;
@@ -8,16 +16,18 @@
 
 body {
   margin: 0;
+  padding: 0;
   text-align: center;
   background-color: rgb(255, 255, 255);
   font-family: "Bubblegum Sans", cursive;
-  height: 100vh;
+  /* min-height: -webkit-fill-available; */
+  /* height: 100%; */
 }
 
 .container {
   padding: 1vh;
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -123,7 +133,7 @@ body {
 .footer{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin: 2vw;
 }
 
