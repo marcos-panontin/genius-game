@@ -7,7 +7,6 @@ const yellowButton = document.getElementById("color-button-4");
 const clearRecordButton = document.getElementById("clear-record");
 const relaxModeButton = document.getElementById("relax-mode-switch");
 
-
 const redSound = document.getElementById("sound1");
 const greenSound = document.getElementById("sound2");
 const blueSound = document.getElementById("sound3");
@@ -32,13 +31,11 @@ let userWantsSounds = soundsCheckbox.checked;
 
 // RELAX MODE
 
-
 if (JSON.parse(localStorage.getItem("userWantsRelaxMode"))) {
   relaxModeButton.checked = true;
 } else {
   relaxModeButton.checked = false;
   localStorage.setItem("userWantsRelaxMode", relaxModeButton.checked);
-
 }
 let userWantsRelaxMode = relaxModeButton.checked;
 
@@ -98,6 +95,7 @@ function generateComputerOrder() {
 }
 
 function gameTurn() {
+  allowSound = true;
   buttonsDisabled = true;
   computerTurn = true;
   if (counter === turn) {
@@ -133,9 +131,22 @@ function check() {
     playerAllGood = false;
     allowSound = false;
     blinkLights();
-    startBtn.innerHTML = `RECOMEÇAR</br> JOGO`;
-    startBtn.style.fontSize = "1.5em";
-    startBtn.disabled = false;
+
+    if (!userWantsRelaxMode) {
+      startBtn.innerHTML = `RECOMEÇAR</br> JOGO`;
+      startBtn.style.fontSize = "1.5em";
+      startBtn.disabled = false;
+    }
+
+    // ZEN MODE
+
+    if (userWantsRelaxMode) {
+      startBtn.innerHTML = `TURNO: ${turn}`;
+      playerOrder = [];
+      computerTurn = true;
+      counter = 0;
+      computerTurnInterval = setInterval(gameTurn, 1000);
+    }
   }
 
   if (playerAllGood && playerOrder.length === turn) {
@@ -257,8 +268,7 @@ clearRecordButton.addEventListener("click", () => {
   localRecord = 0;
 });
 
-
 relaxModeButton.addEventListener("change", () => {
   userWantsRelaxMode = relaxModeButton.checked;
-    localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
+  localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
 });
