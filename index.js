@@ -8,6 +8,7 @@ const clearRecordButton = document.getElementById("clear-record");
 const relaxModeButton = document.getElementById("relax-mode-switch");
 const insaneModeButton = document.getElementById("insane-mode-switch");
 const insaneModeDuration = 400;
+const defaultModeDuration = 800;
 
 const redSound = document.getElementById("sound1");
 const greenSound = document.getElementById("sound2");
@@ -19,10 +20,11 @@ let localRecord = localStorage.getItem("genius-record") || 0;
 const localRecordTime = localStorage.getItem("genius-record-date") || "";
 const localRecordMode = localStorage.getItem("genius-record-mode") || "";
 
-let turnDuration = 800;
+let turnDuration = defaultModeDuration;
 const bestScore = document.getElementById("best-score");
-bestScore.innerHTML =
-  `${localRecord} </br> ${localRecordTime} ${localRecord !== 0 ? '-' : ''} ${localRecordMode}`;
+bestScore.innerHTML = `${localRecord} </br> ${localRecordTime} ${
+  localRecord !== 0 ? "-" : ""
+} ${localRecordMode}`;
 
 //ALLOW SOUNDS
 
@@ -304,9 +306,12 @@ relaxModeButton.addEventListener("change", () => {
     userWantsInsaneMode = insaneModeButton.checked;
   }
   localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
-    if (userWantsInsaneMode) {
-      turnDuration = insaneModeDuration;
-    }
+  if (userWantsInsaneMode) {
+    turnDuration = insaneModeDuration;
+  }
+  if (!userWantsInsaneMode) {
+    turnDuration = defaultModeDuration;
+  }
 });
 
 insaneModeButton.addEventListener("change", () => {
@@ -318,6 +323,9 @@ insaneModeButton.addEventListener("change", () => {
   }
   if (userWantsInsaneMode) {
     turnDuration = insaneModeDuration;
+  }
+  if (!userWantsInsaneMode) {
+    turnDuration = defaultModeDuration;
   }
   localStorage.setItem("userWantsInsaneMode", userWantsInsaneMode);
 });
