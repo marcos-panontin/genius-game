@@ -16,7 +16,7 @@ body {
 .container {
   padding: 1vh;
   display: flex;
-  height: 90vh;
+  height: 100vh;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -117,6 +117,13 @@ body {
 .form-check {
   text-align: left;
   margin-bottom: 1.5vh;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2vw;
 }
 
 @media screen and (min-width: 500px) {
