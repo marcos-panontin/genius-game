@@ -66,153 +66,151 @@
     <title>GENIUS - by Marcos Panontin</title>
   </head>
   <body>
-    <div class="flex-container">
-      <div class="container">
-        <h1 class="main-title">GENIUS</h1>
-        <h1 class="game-rules">
-          Preste atenção e tente repetir as sequências de luzes e sons.
-        </h1>
+    <div class="container">
+      <h1 class="main-title">GENIUS</h1>
+      <h1 class="game-rules">
+        Preste atenção e tente repetir as sequências de luzes e sons.
+      </h1>
 
+      <section class="colors-container">
+        <div class="color-button" id="color-button-1" data-color="red"></div>
+        <div class="color-button" id="color-button-2" data-color="green"></div>
+        <div class="color-button" id="color-button-3" data-color="blue"></div>
+        <div class="color-button" id="color-button-4" data-color="yellow"></div>
+        <button class="start-btn" id="start-btn">
+          <span id="new-game-text"> NOVO <br />JOGO</span>
+        </button>
+      </section>
 
-        <section class="colors-container">
-          <div class="color-button" id="color-button-1" data-color="red"></div>
-          <div
-            class="color-button"
-            id="color-button-2"
-            data-color="green"
-          ></div>
-          <div class="color-button" id="color-button-3" data-color="blue"></div>
-          <div
-            class="color-button"
-            id="color-button-4"
-            data-color="yellow"
-          ></div>
-          <button class="start-btn" id="start-btn">
-            <span id="new-game-text"> NOVO <br />JOGO</span>
-          </button>
-        </section>
-
-
-        
-        <div class="footer">
-          <h1 class="best-score">SEU RECORDE: <span id="best-score"></span></h1>
-          <button
-            type="button"
-            class="btn btn-primary"
+      <div class="footer">
+        <h1 class="best-score">SEU RECORDE: <span id="best-score"></span></h1>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <i
+            class="bi bi-gear"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            <i
-              class="bi bi-gear"
-              data-bs-toggle="modal"
-              data-bs-target="#settings-modal"
-            ></i>
-          </button>
-        </div>
+            data-bs-target="#settings-modal"
+          ></i>
+        </button>
       </div>
+    </div>
 
-      <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
 
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="settings-modal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                CONFIGURAÇÕES
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  id="relax-mode-switch"
-                />
-                <label class="form-check-label" for="flexSwitchCheckDefault"
-                  >Modo Relax (se você cometer um erro, a sequência será
-                  repetida)</label
-                >
-              </div>
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  id="user-wants-sounds"
-                />
-                <label class="form-check-label" for="user-wants-sounds"
-                  >Permitir sons</label
-                >
-              </div>
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-target="#exampleModalToggle2"
-                data-bs-toggle="modal"
-                id="open-reset-record-modal"
-                disabled
-              >
-                Apagar recorde
-              </button>
-            </div>
-            <div class="modal-footer">
-              Genius é um projeto de
-              <a href="https://marcos-panontin.github.io/" target="_blank"
-                >Marcos Panontin</a
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="settings-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              CONFIGURAÇÕES
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="relax-mode-switch"
+              />
+              <label class="form-check-label" for="relax-mode-switch"
+                >Modo Relax (se você cometer um erro, a sequência será
+                repetida)</label
               >
             </div>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="insane-mode-switch"
+              />
+              <label class="form-check-label" for="insane-mode-switch"
+                >Modo Insano (as luzes piscam rapidamente. O turno atual não é mostrado)</label
+              >
+            </div>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="user-wants-sounds"
+              />
+              <label class="form-check-label" for="user-wants-sounds"
+                >Permitir sons</label
+              >
+            </div>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-target="#exampleModalToggle2"
+              data-bs-toggle="modal"
+              id="open-reset-record-modal"
+              disabled
+            >
+              Apagar recorde
+            </button>
+          </div>
+          <div class="modal-footer">
+            Genius é um projeto de
+            <a href="https://marcos-panontin.github.io/" target="_blank"
+              >Marcos Panontin</a
+            >
           </div>
         </div>
       </div>
+    </div>
 
-      <div
-        class="modal fade"
-        id="exampleModalToggle2"
-        aria-hidden="true"
-        aria-labelledby="exampleModalToggleLabel2"
-        tabindex="-1"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
-                Apagar recorde
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              Você tem certeza que deseja apagar o seu recorde? É impossível
-              voltar atrás dessa decisão.
-            </div>
-            <div class="modal-footer">
-              <button
-                class="btn btn-danger"
-                data-bs-target="#settings-modal"
-                data-bs-toggle="modal"
-                id="clear-record"
-              >
-                Apagar recorde
-              </button>
-            </div>
+    <div
+      class="modal fade"
+      id="exampleModalToggle2"
+      aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel2"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+              Apagar recorde
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Você tem certeza que deseja apagar o seu recorde? É impossível
+            voltar atrás dessa decisão.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-danger"
+              data-bs-target="#settings-modal"
+              data-bs-toggle="modal"
+              id="clear-record"
+            >
+              Apagar recorde
+            </button>
           </div>
         </div>
       </div>

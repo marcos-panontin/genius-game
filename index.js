@@ -6,6 +6,7 @@ const blueButton = document.getElementById("color-button-3");
 const yellowButton = document.getElementById("color-button-4");
 const clearRecordButton = document.getElementById("clear-record");
 const relaxModeButton = document.getElementById("relax-mode-switch");
+const insaneModeButton = document.getElementById("insane-mode-switch");
 
 const redSound = document.getElementById("sound1");
 const greenSound = document.getElementById("sound2");
@@ -16,6 +17,7 @@ const errorSound = document.getElementById("soundError");
 let localRecord = localStorage.getItem("genius-record") || 0;
 const localRecordTime = localStorage.getItem("genius-record-date") || "";
 
+let turnDuration = 800;
 const bestScore = document.getElementById("best-score");
 bestScore.innerHTML = `${localRecord} </br> ${localRecordTime}` || 0;
 
@@ -38,6 +40,20 @@ if (JSON.parse(localStorage.getItem("userWantsRelaxMode"))) {
   localStorage.setItem("userWantsRelaxMode", relaxModeButton.checked);
 }
 let userWantsRelaxMode = relaxModeButton.checked;
+
+//INSANE MODE
+
+if (JSON.parse(localStorage.getItem("userWantsInsaneMode"))) {
+  insaneModeButton.checked = true;
+} else {
+  insaneModeButton.checked = false;
+  localStorage.setItem("userWantsInsaneMode", insaneModeButton.checked);
+}
+let userWantsInsaneMode = insaneModeButton.checked;
+
+if (userWantsInsaneMode) {
+  turnDuration = 400;
+}
 
 // ENABLING REMOVE RECORD BUTTON, IF RECORD EXISTS IN LOCAL STORAGE
 
@@ -83,7 +99,7 @@ function startGame() {
   startBtn.innerHTML = `TURNO: ${turn}`;
   startBtn.style.fontSize = "1.5em";
   generateComputerOrder();
-  computerTurnInterval = setInterval(gameTurn, 800);
+  computerTurnInterval = setInterval(gameTurn, turnDuration);
 }
 
 function generateComputerOrder() {
@@ -167,7 +183,7 @@ function check() {
     playerOrder = [];
     computerTurn = true;
     counter = 0;
-    computerTurnInterval = setInterval(gameTurn, 1000);
+    computerTurnInterval = setInterval(gameTurn, turnDuration);
   }
 }
 
@@ -270,5 +286,16 @@ clearRecordButton.addEventListener("click", () => {
 
 relaxModeButton.addEventListener("change", () => {
   userWantsRelaxMode = relaxModeButton.checked;
+  if (insaneModeButton.checked) {
+    insaneModeButton.checked = !relaxModeButton.checked;
+  }
   localStorage.setItem("userWantsRelaxMode", userWantsRelaxMode);
+});
+
+insaneModeButton.addEventListener("change", () => {
+  userWantsInsaneMode = insaneModeButton.checked;
+  if (relaxModeButton.checked) {
+    relaxModeButton.checked = !insaneModeButton.checked;
+  }
+  localStorage.setItem("userWantsInsaneMode", userWantsInsaneMode);
 });
