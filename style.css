@@ -152,20 +152,31 @@ body {
   body {
     background-color: lightseagreen;
     height: 80%;
-
   }
 
+  .main-title {
+  font-size: max(5vw, 50px);
+}
+
+  .color-button {
+    width: 35%;
+  }
   .container {
     background-color: white;
     max-width: 400px;
+    width: 30%;
     margin: auto;
+    margin-top: 2%;
     border: solid 4px rgb(21, 100, 96);
     border-radius: 20px;
+    padding: 0 4%;
   }
   .game-rules {
     font-size: 1.5em;
   }
   .start-btn {
-    font-size: 2.5em;
+    font-size: 2vw;
+      width: 30%;
+
   }
 }
