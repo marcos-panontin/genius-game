@@ -4,11 +4,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100%;
+  /* height: 100%; */
 }
 
 html {
-  height: 100%;
+  /* height: 100%; */
 }
 
 body {
@@ -17,7 +17,11 @@ body {
   text-align: center;
   background-color: rgb(255, 255, 255);
   font-family: "Bubblegum Sans", cursive;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .container {
@@ -26,6 +30,7 @@ body {
   height: 100%;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 
 .main-title {
@@ -60,15 +65,18 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 80%;
+  max-width: 300px;
+  min-width: 100px;
   /* align-self: center; */
   position: relative;
-  margin-bottom: 3vh;
+  /* margin-bottom: 3vh; */
   /* padding: 3vh; */
 }
 
 .color-button {
   aspect-ratio: 1 / 1;
-  width: 40%;
+  width: 50%;
   height: unset;
 }
 
@@ -98,10 +106,10 @@ body {
 
 .start-btn {
   background-color: whitesmoke;
-  font-size: 10vw;
-  aspect-ratio: 1 / 1;
-  width: 45%;
-  height: unset;
+  font-size: calc(16px + 1.5vw);
+  /* aspect-ratio: 1 / 1; */
+  width: 50%;
+  height: 50%;
   position: absolute;
   border-radius: 100%;
   align-self: center;
@@ -149,34 +157,25 @@ body {
 }
 
 @media screen and (min-width: 500px) {
-  body {
-    background-color: lightseagreen;
-    height: 80%;
-  }
-
   .main-title {
-  font-size: max(5vw, 50px);
-}
-
+    font-size: max(5vw, 50px);
+  }
   .color-button {
-    width: 35%;
+    /* width: 35%; */
   }
   .container {
     background-color: white;
-    max-width: 400px;
-    width: 30%;
-    margin: auto;
-    margin-top: 2%;
-    border: solid 4px rgb(21, 100, 96);
-    border-radius: 20px;
-    padding: 0 4%;
+    /* max-width: 400px; */
+    /* width: 30%; */
+    /* margin: auto; */
+    /* margin-top: 2%; */
+    /* padding: 0 4%; */
   }
   .game-rules {
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
   }
   .start-btn {
-    font-size: 2vw;
-      width: 30%;
-
+    /* font-size: 2vw; */
+    /* width: 30%; */
   }
 }
