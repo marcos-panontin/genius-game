@@ -106,7 +106,7 @@ body {
 
 .start-btn {
   background-color: whitesmoke;
-  font-size: calc(16px + 1.5vw);
+  font-size: calc(12px + 3vw);
   /* aspect-ratio: 1 / 1; */
   width: 50%;
   height: 50%;
