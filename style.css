@@ -142,10 +142,12 @@ body {
   display: flex;
   height: unset;
   margin-bottom: 2vh;
+  align-items: center;
 }
 
 .best-score {
-  margin-left: 1vh;
+  margin-left: 1vw;
+  margin-right: 10vw;
   font-size: 2vh;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -158,24 +160,7 @@ body {
 
 @media screen and (min-width: 500px) {
   .main-title {
-    font-size: max(5vw, 50px);
+    /* font-size: max(5vw, 50px); */
   }
-  .color-button {
-    /* width: 35%; */
-  }
-  .container {
-    background-color: white;
-    /* max-width: 400px; */
-    /* width: 30%; */
-    /* margin: auto; */
-    /* margin-top: 2%; */
-    /* padding: 0 4%; */
-  }
-  .game-rules {
-    /* font-size: 1.5em; */
-  }
-  .start-btn {
-    /* font-size: 2vw; */
-    /* width: 30%; */
-  }
+
 }
