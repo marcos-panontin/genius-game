@@ -209,6 +209,7 @@ function blinkLights() {
 }
 
 function red() {
+    redButton.classList.add('redShadow');
   redButton.style.background = "tomato";
   redSound.currentTime = 0;
   if (allowSound && userWantsSounds) redSound.play();
@@ -216,6 +217,7 @@ function red() {
 }
 
 function green() {
+    greenButton.classList.add('greenShadow');
   greenButton.style.background = "lightgreen";
   greenSound.currentTime = 0;
   if (allowSound && userWantsSounds) greenSound.play();
@@ -223,6 +225,7 @@ function green() {
 }
 
 function blue() {
+    blueButton.classList.add('blueShadow');
   blueButton.style.background = "lightskyblue";
   blueSound.currentTime = 0;
   if (allowSound && userWantsSounds) blueSound.play();
@@ -230,6 +233,7 @@ function blue() {
 }
 
 function yellow() {
+  yellowButton.classList.add('yellowShadow');
   yellowButton.style.background = "yellow";
   yellowSound.currentTime = 0;
   if (allowSound && userWantsSounds) yellowSound.play();
@@ -237,6 +241,10 @@ function yellow() {
 }
 
 function resetColors() {
+  yellowButton.classList.remove('yellowShadow');
+  blueButton.classList.remove('blueShadow');
+  greenButton.classList.remove('greenShadow');
+  redButton.classList.remove('redShadow');
   yellowButton.style.background = "goldenrod";
   blueButton.style.background = "darkblue";
   greenButton.style.background = "darkgreen";
