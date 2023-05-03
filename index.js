@@ -206,6 +206,12 @@ function blinkLights() {
   blueButton.style.background = "lightskyblue";
   greenButton.style.background = "lightgreen";
   redButton.style.background = "tomato";
+  redButton.classList.add('redShadow');
+      greenButton.classList.add('greenShadow');
+    blueButton.classList.add('blueShadow');
+  yellowButton.classList.add('yellowShadow');
+
+
 }
 
 function red() {
