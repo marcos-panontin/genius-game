@@ -1,6 +1,7 @@
 # Jogo Genius
 
-##Link para jogar: https://marcos-panontin.github.io/genius-game/
+## Link para jogar: 
+https://marcos-panontin.github.io/genius-game/
 
 Este é um jogo baseado no jogo de memória "Simon", onde o jogador precisa repetir uma sequência de cores que o computador irá gerar. 
 
@@ -32,7 +33,6 @@ O jogo também possui um botão para ligar ou desligar os sons e uma opção par
 ## Local Storage
 
 Este jogo utiliza a funcionalidade do navegador LocalStorage para salvar o recorde localmente. O recorde é armazenado em uma variável chamada `localRecord` e é carregado automaticamente sempre que o jogo é iniciado. O jogo também utiliza o LocalStorage para salvar as preferências do usuário, como se o som está habilitado e se os modos relax / insano estão ativados ou não.
-
 
 ## Autoria
 
