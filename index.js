@@ -207,15 +207,13 @@ function blinkLights() {
   greenButton.style.background = "lightgreen";
   redButton.style.background = "tomato";
   redButton.classList.add('redShadow');
-      greenButton.classList.add('greenShadow');
-    blueButton.classList.add('blueShadow');
+  greenButton.classList.add('greenShadow');
+  blueButton.classList.add('blueShadow');
   yellowButton.classList.add('yellowShadow');
-
-
 }
 
 function red() {
-    redButton.classList.add('redShadow');
+  redButton.classList.add('redShadow');
   redButton.style.background = "tomato";
   redSound.currentTime = 0;
   if (allowSound && userWantsSounds) redSound.play();
